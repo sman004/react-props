@@ -2,31 +2,28 @@ import React from "react";
 import Card from "./components/Card";
 import contacts from "./components/contact";
 
-
+// method to pass into the map fuction to loop through the contacts array
+  function createCard(contact) {
+    return (
+          <Card
+          // key is for unique identity of each object to the contacts array to display on the page
+           key = {contact.key}
+           name ={contact.name}
+           img = {contact.imgURL}
+           tel = {contact.phone}
+           email= {contact.email}
+          
+          />
+    );
+  }
 function App() {
   return (
     <div>
-      <Card
-       name = {contacts[0].name}
-       img = {contacts[0].imgURL}
-       tel = {contacts[0].phone}
-       email={contacts[0].email}
-      />
-
-      <Card
-        name = {contacts[1].name}
-        img = {contacts[1].imgURL}
-        tel = {contacts[1].phone}
-        email={contacts[1].email}
-      />
-
-<Card
-        name = {contacts[2].name}
-        img = {contacts[2].imgURL}
-        tel = {contacts[2].phone}
-        email={contacts[2].email}
-      />
-     
+      <h1 className="heading">My Contacts</h1>
+      {/* 
+        passsing the createCard method to the map fuction      
+      */}
+      {contacts.map(createCard)}
     </div>
   );
 }
